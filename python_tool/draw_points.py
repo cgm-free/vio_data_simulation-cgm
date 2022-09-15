@@ -27,6 +27,7 @@ with open(filepath + '/all_points.txt', 'r') as f:
     for line in data:  
         odom = line.split()        #将单个数据分隔开存好  
         numbers_float = map(float, odom) #转化为浮点数  
+        numbers_float = list(numbers_float)
         x.append( numbers_float[0] )
         y.append( numbers_float[1] )
         z.append( numbers_float[2] )
@@ -42,7 +43,7 @@ with open(filepath + '/cam_pose.txt', 'r') as f:   #   imu_circle   imu_spline
     for line in data:  
         odom = line.split()        #将单个数据分隔开存好  
         numbers_float = map(float, odom) #转化为浮点数  
-
+        numbers_float = list(numbers_float)
         #timestamp.append( numbers_float[0])        
         quaterntions.append( [numbers_float[qw_index], numbers_float[qw_index+1],numbers_float[qw_index+2],numbers_float[qw_index+3]   ] )   # qw,qx,qy,qz
         position.append( [numbers_float[qw_index+4], numbers_float[qw_index+5],numbers_float[qw_index+6] ] )              
@@ -77,6 +78,7 @@ for i in range(0,400,5):
         for line in data:  
             odom = line.split()        #将单个数据分隔开存好  
             numbers_float = map(float, odom) #转化为浮点数  
+            numbers_float = list(numbers_float)
             x1.append( numbers_float[0] )
             y1.append( numbers_float[1] )
             z1.append( numbers_float[2] )
@@ -89,6 +91,7 @@ for i in range(0,400,5):
         for line in data:
             odom = line.split()  # 将单个数据分隔开存好
             numbers_float = map(float, odom)  # 转化为浮点数
+            numbers_float = list(numbers_float)
             ax.plot([numbers_float[0], numbers_float[3]], [numbers_float[1], numbers_float[4]],'b' ,zs=[numbers_float[2], numbers_float[5]])
         
     ax.scatter(x1, y1, z1,c='r',marker='^')
